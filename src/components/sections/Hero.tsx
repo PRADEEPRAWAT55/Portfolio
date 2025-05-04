@@ -62,7 +62,7 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
                             <span className="text-sm sm:text-base text-gray-200">Get in Touch</span>
                         </a>
                         <a
-                            href="https://linkedin.com/in/pradeep-rawat"
+                            href="https://linkedin.com/in/pradeep-rawat-psr"
                             className="px-4 sm:px-6 py-2 sm:py-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 rounded-lg flex items-center justify-center gap-2 transition-all">
                             <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
                             <span className="text-sm sm:text-base text-gray-200">Connect</span>
