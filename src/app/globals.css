@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Optimize animation rendering */
+* {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Remove outline on buttons */
+button:focus {
+  outline: none;
+}
+
