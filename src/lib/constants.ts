@@ -162,6 +162,6 @@ export const PROJECTS: Project[] = [
       "Redis",
     ],
     role: "Backend Developer",
-    demoUrl: "#"
+    demoUrl: "https://149photos.com/"
   }
 ];
