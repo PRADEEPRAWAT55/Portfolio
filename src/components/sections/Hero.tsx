@@ -8,7 +8,7 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
   return (
     <section 
       ref={ref} 
-      id="hero"
+      id="home"
       className="relative min-h-screen flex items-center px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden"
     >
       
@@ -144,25 +144,6 @@ Full Stack Developer building scalable web platforms and intuitive mobile applic
 
       {/* Social Links & Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8">
-        <motion.div
-          className="flex gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          <a
-            href="#"
-            className="text-gray-600 hover:text-blue-400 transition-colors"
-          >
-            <Github className="w-6 h-6" />
-          </a>
-          <a
-            href="#"
-            className="text-gray-600 hover:text-green-400 transition-colors"
-          >
-            <Linkedin className="w-6 h-6" />
-          </a>
-        </motion.div>
 
         <motion.div
           animate={{ y: [0, 15, 0] }}

@@ -31,18 +31,15 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}>
-            {/* Glowing Progress Bar */}
-            <motion.div
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400/80 via-green-400/80 to-blue-400/80"
-                style={{
-                    width: `${scrollPercentage}%`,
-                    filter: `blur(${scrollPercentage > 0 ? 8 : 0}px)`,
-                }}
-                transition={{
-                    duration: 0.3,
-                    ease: "easeOut",
-                }}
-            />
+         
+            <motion.div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <motion.div
+                    className="h-full bg-gradient-to-r from-blue-400 to-blue-200"
+                    style={{ width: `${scrollPercentage}%` }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}>
+                    <div className="absolute right-0 -top-1.5 text-xs text-green-400 font-mono"/>
+                </motion.div>
+            </motion.div>
 
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
