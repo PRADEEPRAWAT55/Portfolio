@@ -1,6 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pradeep Rawat's Portfolio
+
+This is a personal portfolio website built using [Next.js](https://nextjs.org), showcasing my skills, projects, experience, and achievements. The portfolio is designed to be responsive, modern, and visually appealing, with smooth animations and interactive components.
+
+## Features
+
+- **Hero Section**: A visually engaging introduction with a gradient background and quick contact links.
+- **Skills Section**: Displays technical skills with icons and categories.
+- **Experience Section**: A timeline of professional experience with highlights.
+- **Projects Section**: Showcases key projects with descriptions, tech stack, and links to live demos or code repositories.
+- **Education Section**: Highlights academic qualifications.
+- **Achievements Section**: Lists notable achievements.
+- **Responsive Design**: Fully responsive for desktop, tablet, and mobile devices.
+- **Smooth Animations**: Powered by [Framer Motion](https://www.framer.com/motion/).
+
+## Tech Stack
+
+- **Frontend**: React.js, Next.js, Tailwind CSS
+- **Backend**: Node.js, NestJS
+- **Database**: PostgreSQL, MongoDB, Redis
+- **Mobile**: React Native
+- **DevOps**: Docker, CI/CD Pipelines, Vercel Deployment
+- **Other Tools**: Framer Motion, React Icons, Lucide React
 
 ## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/prdp-portfolio.git
+   cd prdp-portfolio
+```
 
 First, run the development server:
 
@@ -34,3 +71,41 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Key Sections:
+1. **Features**: Highlights the functionality of the portfolio.
+2. **Tech Stack**: Lists the technologies used in the project.
+3. **Getting Started**: Provides installation and setup instructions.
+4. **Project Structure**: Explains the folder and file organization.
+5. **Deployment**: Guides deployment on Vercel.
+6. **Screenshots**: Placeholder for visual previews of the portfolio.
+7. **Contact**: Includes your contact details.
+
+## Project Structure
+
+```markdown
+prdp-portfolio/
+├── public/                 # Static assets (e.g., favicon, images)
+├── src/
+│   ├── app/                # Next.js app directory
+│   │   ├── layout.tsx      # Root layout for the app
+│   │   ├── page.tsx        # Main page component
+│   ├── components/         # Reusable components
+│   │   ├── Navbar.tsx      # Navigation bar
+│   │   ├── LoadingSkeleton.tsx # Loading skeleton component
+│   │   └── sections/       # Section components (Hero, Skills, Projects, etc.)
+│   ├── lib/                # Utility files and constants
+│   │   ├── constants.ts    # Data for skills, projects, etc.
+│   │   └── tech-icons.tsx  # Icons for technologies
+│   ├── hooks/              # Custom React hooks
+│   │   └── useScrollSection.ts # Hook for tracking active sections
+│   └── globals.css         # Global styles
+├── tsconfig.json           # TypeScript configuration
+├── next.config.ts          # Next.js configuration
+├── postcss.config.mjs      # PostCSS configuration
+├── tailwind.config.js      # Tailwind CSS configuration
+├── package.json            # Project metadata and dependencies
+└── README.md               # Project documentation
+```
+
+Feel free to customize this [README.md](http://_vscodecontentref_/14) further based on your preferences!
