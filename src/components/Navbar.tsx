@@ -33,15 +33,21 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
             className="fixed top-0 left-0 w-full bg-gray-900/95 backdrop-blur-md z-50 shadow-xl border-b border-gray-800/50"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
         >
             {/* Progress Bar */}
             <motion.div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <motion.div
-                    className="h-full bg-gradient-to-r from-blue-400 to-blue-200"
+                    className="h-full bg-blue-600 relative overflow-hidden shadow-lg shadow-blue-500/30"
                     style={{ width: `${scrollPercentage}%` }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                />
+                    transition={{ duration: 0.3, ease: "easeOut" }}>
+                    {/* Shimmer effect on progress bar */}
+                    <motion.div
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                    />
+                </motion.div>
             </motion.div>
 
             <div className="container mx-auto px-4">
@@ -54,23 +60,30 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
                         onClick={() => scrollToSection("home")}
                     >
                         {/* Simplified Mobile Logo */}
-                        <div className="md:hidden p-2 rounded-lg bg-blue-400/20">
-                            <span className="text-blue-400 font-mono text-lg">{"</>"}</span>
+                        <div className="md:hidden">
+                            <motion.div 
+                                className="p-2 rounded-lg bg-slate-800 border border-slate-700"
+                                whileHover={{ rotate: [0, -5, 5, 0] }}
+                                transition={{ duration: 0.5 }}>
+                                <span className="text-blue-400 font-mono text-lg">{"</>"}</span>
+                            </motion.div>
                         </div>
 
                         {/* Desktop Logo */}
-                        <div className="hidden md:flex items-center space-x-2">
+                        <div className="hidden md:flex items-center space-x-3">
                             <motion.div
-                                className="relative p-2 rounded-lg bg-gradient-to-br from-blue-400/20 to-green-400/20"
-                                animate={{ rotate: [0, -5, 5, 0] }}
-                                transition={{ duration: 2, repeat: Infinity }}
+                                className="relative p-2 rounded-lg bg-slate-800 border border-slate-700"
+                                whileHover={{ rotate: [0, -5, 5, 0], scale: 1.05 }}
+                                transition={{ duration: 0.5 }}
                             >
                                 <span className="text-blue-400 font-mono text-xl tracking-tighter">{"</>"}</span>
-                                <div className="absolute inset-0 bg-blue-400/10 rounded-lg animate-pulse" />
                             </motion.div>
-                            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                                Pradeep
-                            </span>
+                            <div className="flex flex-col">
+                                <span className="text-xl font-bold text-white">
+                                    Pradeep
+                                </span>
+                                <span className="text-xs text-gray-500 font-mono">Full Stack Dev</span>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -92,16 +105,9 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
                                 whileHover={{ y: -2 }}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <span className={`relative z-10 text-sm font-medium ${activeSection === section.id ? "text-blue-400" : "text-gray-400 group-hover:text-gray-200"}`}>
+                                <span className="relative z-10 text-sm font-medium text-gray-400 group-hover:text-gray-200">
                                     {section.label}
                                 </span>
-                                {activeSection === section.id && (
-                                    <motion.div
-                                        layoutId="nav-underline"
-                                        className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 to-green-400"
-                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                    />
-                                )}
                             </motion.button>
                         ))}
                     </div>
@@ -129,7 +135,7 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
                             <button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
-                                className={`w-full px-6 py-3 text-left ${activeSection === section.id ? "text-blue-400 bg-gray-800/50" : "text-gray-400 hover:bg-gray-800/30"}`}
+                                className="w-full px-6 py-3 text-left text-gray-400 hover:bg-gray-800/30 hover:text-gray-200 transition-colors"
                             >
                                 {section.label}
                             </button>
