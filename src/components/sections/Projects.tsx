@@ -5,7 +5,7 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { Project } from '@/lib/constants';
 import Image from 'next/image';
 import { techIcons } from '@/lib/tech-icons';
-import { forwardRef, ForwardedRef, useState } from 'react';
+import { forwardRef, ForwardedRef } from 'react';
 import Tilt from 'react-parallax-tilt';
 
 type ProjectsProps = {
@@ -13,8 +13,6 @@ type ProjectsProps = {
 };
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   const cardVariants = {
     hidden: { 
       opacity: 0, 

@@ -2,7 +2,7 @@
 
 import { motion, useAnimationControls } from "framer-motion";
 import { forwardRef, ForwardedRef, useEffect } from "react";
-import { Linkedin, Github, Mail, Phone, Download, ArrowRight } from "lucide-react";
+import { Linkedin, Github, Mail, Phone, ArrowRight } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 
 const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {

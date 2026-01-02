@@ -97,7 +97,9 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-4">
-                        {sections.map((section) => (
+                        {sections.map((section) => {
+                            const isActive = activeSection === section.id;
+                            return (
                             <motion.button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
@@ -105,11 +107,12 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
                                 whileHover={{ y: -2 }}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <span className="relative z-10 text-sm font-medium text-gray-400 group-hover:text-gray-200">
+                                <span className={`relative z-10 text-sm font-medium transition-colors ${isActive ? "text-cyan-300" : "text-gray-400 group-hover:text-gray-200"}`}>
                                     {section.label}
                                 </span>
                             </motion.button>
-                        ))}
+                        );
+                        })}
                     </div>
 
                     {/* Contact Button - Hidden on Mobile */}
@@ -131,15 +134,18 @@ const Navbar = ({ activeSection, scrollPercentage }: NavbarProps) => {
                         transition={{ duration: 0.2 }}
                         className="md:hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md py-4"
                     >
-                        {sections.map((section) => (
+                        {sections.map((section) => {
+                            const isActive = activeSection === section.id;
+                            return (
                             <button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
-                                className="w-full px-6 py-3 text-left text-gray-400 hover:bg-gray-800/30 hover:text-gray-200 transition-colors"
+                                className={`w-full px-6 py-3 text-left transition-colors ${isActive ? "text-cyan-300 bg-gray-800/40" : "text-gray-400 hover:bg-gray-800/30 hover:text-gray-200"}`}
                             >
                                 {section.label}
                             </button>
-                        ))}
+                        );
+                        })}
                         <a
                             href="mailto:Pradeep2000rawat@gmail.com"
                             className="flex items-center space-x-2 px-6 py-3 mt-4 text-gray-400 hover:bg-gray-800/30"

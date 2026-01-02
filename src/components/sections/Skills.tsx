@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
-import { forwardRef, ForwardedRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { forwardRef, ForwardedRef } from 'react';
 import { Skill } from '@/lib/constants';
 import { techIcons } from '@/lib/tech-icons';
 import Tilt from 'react-parallax-tilt';
