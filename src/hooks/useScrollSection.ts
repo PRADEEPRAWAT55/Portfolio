@@ -9,7 +9,7 @@ export const useScrollSection = (sectionIds: string[], offset = 100) => {
     let timeoutId: NodeJS.Timeout  | null = null;
 
     const handleScroll = () => {
-      if (timeoutId) return; // Skip if a timeout is already set
+      if (timeoutId) return;
 
       timeoutId = setTimeout(() => {
         const scrollPosition = window.scrollY + offset;
@@ -27,8 +27,8 @@ export const useScrollSection = (sectionIds: string[], offset = 100) => {
           }
         }
 
-        timeoutId = null; // Reset timeout   
-      }, 100); // Adjust the delay as needed
+        timeoutId = null;
+      }, 100); 
     };
 
     window.addEventListener('scroll', handleScroll);

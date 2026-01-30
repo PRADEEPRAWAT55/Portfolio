@@ -1,4 +1,5 @@
 // lib/tech-icons.ts
+import React from 'react';
 import { 
     SiReact, 
     SiNextdotjs,
@@ -25,15 +26,25 @@ import {
     SiAwsamplify,
     SiFastapi,
     SiStripe,
-    SiRealm
+    SiRealm,
+    SiVercel,
+    SiExpress,
+    SiPrisma,
+    SiRazorpay,
+    SiGithubactions,
+    SiAmazon,
+    SiFramer
 } from 'react-icons/si';
 
 import { FaJava } from "react-icons/fa";
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 
 
 
 import { TbBrandSocketIo } from 'react-icons/tb';
+import { TbDatabase } from 'react-icons/tb';
+import { MdGridOn } from 'react-icons/md';
 
 export const techIcons = {
     // Languages
@@ -62,7 +73,7 @@ export const techIcons = {
     'MySQL': <SiMysql className="text-[#4479A1]" />,
     'PostgreSQL': <SiPostgresql className="text-[#336791]" />,
     'MongoDB': <SiMongodb className="text-[#47A248]" />,
-    'TypeORM': <SiSass className="text-[#C76494]" />, // Close alternative
+    'TypeORM': <TbDatabase className="text-[#4DBA87]" />,
     'Redis': <SiRedis className="text-[#DC382D]" />,
     'Realm' : <SiRealm className="text-[#00A3E0]" />,
 
@@ -73,6 +84,18 @@ export const techIcons = {
     'Redux': <SiRedux className="text-[#764ABC]" />,
     'Docker': <SiDocker className="text-[#2496ED]" />,
 
+    // UI / Misc
+    'AG Grid': <MdGridOn className="text-[#57A500]" />,
+    'AsyncStorage': <TbDatabase className="text-[#6B7280]" />,
+    'Framer Motion': <SiFramer className="text-[#0055FF]" />,
+    'Vercel': <SiVercel className="text-white" />,
+    'Socket.io': <TbBrandSocketIo className="text-[#010101]" />,
+    'Express': <SiExpress className="text-[#000000]" />,
+    'SES': <SiAmazon className="text-[#FF9900]" />,
+    'CI/CD': <SiGithubactions className="text-[#2088FF]" />,
+    'Razorpay': <SiRazorpay className="text-[#2A73FF]" />,
+    'Prisma': <SiPrisma className="text-[#0EA5A4]" />,
+
     // Additional icons for projects
     'Python': <SiPython className="text-[#3776AB]" />,
     'TensorFlow': <SiTensorflow className="text-[#FF6F00]" />,
@@ -80,3 +103,33 @@ export const techIcons = {
     'FastAPI': <SiFastapi className="text-[#009688]" />,
     'Stripe': <SiStripe className="text-[#008CDD]" />,
 };
+
+// Build a normalized lookup to tolerate small naming differences
+const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+const normalizedMap: Record<string, JSX.Element> = {};
+Object.keys(techIcons).forEach((k) => {
+    normalizedMap[normalize(k)] = techIcons[k as keyof typeof techIcons];
+});
+
+export function getTechIcon(name?: string) {
+    if (!name) return <AiOutlineQuestionCircle className="text-gray-400" />;
+    const exact = (techIcons as any)[name];
+    if (exact) return exact;
+    const n = normalize(name);
+    if (normalizedMap[n]) return normalizedMap[n];
+
+    // some common aliases
+    const aliases: Record<string, string> = {
+        nestjs: 'nest.js',
+        nextjs: 'next.js',
+        'react': 'react.js',
+        'reactjs': 'react.js',
+        socketio: 'socket.io',
+        aggrid: 'ag grid',
+        framer: 'framer motion',
+        vercel: 'vercel',
+    };
+    if (aliases[n] && normalizedMap[normalize(aliases[n])]) return normalizedMap[normalize(aliases[n])];
+
+    return <AiOutlineQuestionCircle className="text-gray-400" />;
+}

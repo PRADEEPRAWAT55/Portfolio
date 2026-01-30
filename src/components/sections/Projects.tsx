@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { Project } from '@/lib/constants';
 import Image from 'next/image';
-import { techIcons } from '@/lib/tech-icons';
+import { techIcons, getTechIcon } from '@/lib/tech-icons';
 import { forwardRef, ForwardedRef } from 'react';
 import Tilt from 'react-parallax-tilt';
+import ReadMore from '@/components/ReadMore';
 
 type ProjectsProps = {
   projects: Project[];
@@ -34,26 +35,27 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 
   return (
     <Tilt
-      tiltMaxAngleX={5}
-      tiltMaxAngleY={5}
+      tiltMaxAngleX={3}
+      tiltMaxAngleY={3}
       glareEnable={true}
-      glareMaxOpacity={0.15}
+      glareMaxOpacity={0.12}
       glareColor="#3b82f6"
       glarePosition="all"
       glareBorderRadius="20px"
-      scale={1.02}
-      transitionSpeed={1000}>
+      scale={1.01}
+      transitionSpeed={400}>
       <motion.div
         variants={cardVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         whileHover={{ 
-          y: -10,
-          rotateX: 5,
-          transition: { duration: 0.3 }
+          y: -6,
+          rotateX: 3,
+          transition: { duration: 0.22, ease: 'easeOut' }
         }}
-        className="group h-full bg-slate-900/90 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-700 hover:border-blue-500/60 relative" style={{ transformStyle: 'preserve-3d' }}>
+        className="group h-full bg-slate-900/90 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-700 hover:border-blue-500/60 relative"
+        style={{ transformStyle: 'preserve-3d', willChange: 'transform', backfaceVisibility: 'hidden' }}>
         
         {/* Project Image with Overlay */}
         {project.image && (
@@ -76,7 +78,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white shadow-lg backdrop-blur-sm transition-colors"
+                  className="p-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white shadow-lg backdrop-blur-sm transition-colors relative z-40"
                   aria-label="Live Demo">
                   <FiExternalLink size={18} />
                 </motion.a>
@@ -88,7 +90,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-slate-700 hover:bg-slate-600 rounded-full text-white shadow-lg backdrop-blur-sm transition-colors"
+                  className="p-3 bg-slate-700 hover:bg-slate-600 rounded-full text-white shadow-lg backdrop-blur-sm transition-colors relative z-40"
                   aria-label="View Code">
                   <FiGithub size={18} />
                 </motion.a>
@@ -101,10 +103,22 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 rounded-full text-sm font-semibold text-white shadow-lg">
+                className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 rounded-full text-sm font-semibold text-white shadow-lg relative z-40">
                 {project.role}
               </motion.span>
             </div>
+            {project.demoUrl && (
+              <div className="absolute bottom-4 right-4">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-3 py-2 rounded-full text-sm font-semibold text-white shadow-lg hover:scale-105 transition-transform relative z-40">
+                  <FiExternalLink size={14} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            )}
           </div>
         )}
 
@@ -116,10 +130,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             {project.name}
           </motion.h3>
 
+          
+
           {/* Description */}
-          <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3">
+          <ReadMore className="text-gray-400 mb-6" clamp={3}>
             {project.description}
-          </p>
+          </ReadMore>
 
           {/* Tech Stack */}
           <div className="mb-6">
@@ -138,19 +154,31 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                                 transition: { duration: 0.2 }
                               }}
                               className="flex items-center gap-2 bg-slate-700/60 hover:bg-slate-700 px-3 py-2 rounded-full text-sm border border-slate-600/60 hover:border-blue-500/60 transition-all cursor-pointer">
-                              {techIcons[tech as keyof typeof techIcons] && (
+                              {getTechIcon(tech) && (
                                 <motion.span 
                                   className="text-blue-300 group-hover:text-blue-400 transition-colors"
                                   whileHover={{ scale: 1.1 }}
                                   transition={{ duration: 0.2 }}
                                   >
-                                  {techIcons[tech as keyof typeof techIcons]}
+                                  {getTechIcon(tech)}
                                 </motion.span>
                               )}
                               <span className="text-gray-200 font-medium">{tech}</span>
                             </motion.div>
                           ))}
             </div>
+            {!project.image && project.demoUrl && (
+            <div className="mb-4">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-3 py-2 mt-5 rounded-full text-sm font-semibold text-white shadow-md hover:scale-105 transition-transform">
+                <FiExternalLink size={14} />
+                <span>Live Demo</span>
+              </a>
+            </div>
+          )}
           </div>
 
           {/* Key Features */}
@@ -184,6 +212,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             </div>
           )}
         </div>
+
+        {/* Click overlay to open demoUrl (keeps buttons clickable via z-index) */}
+        {project.demoUrl && (
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} demo`} className="absolute inset-0 z-20" />
+        )}
 
         {/* Animated border gradient */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">

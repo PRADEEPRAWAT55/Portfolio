@@ -142,10 +142,10 @@ export const PROJECTS: Project[] = [
   {
     name: "KFM24/7 (FMI)",
     description:
-      "Fleet management platform with web and mobile apps for operations, tracking, and reporting.",
+      "Facility management solutions, offering a comprehensive suite of services to businesses of all sizes platform with web and mobile apps for operations, tracking, and reporting.",
     techStack: ["React.js", "React Native", "Nest.js", "PostgreSQL", "Redis", "Docker"],
     role: "Full Stack Developer",
-    demoUrl: "https://kfm247.com",
+    demoUrl: "https://www.fmintegrated.com/",
   },
   {
     name: "Survey App for Truck Inspections",
@@ -153,6 +153,7 @@ export const PROJECTS: Project[] = [
       "Offline-first React Native app for technicians to record tire metrics, map positions, and sync when online; improves inspection accuracy and fleet maintenance.",
     techStack: ["React Native", "TypeScript", "Realm", "AsyncStorage", "Redux"],
     role: "Frontend Developer",
+     demoUrl: "https://www.kaltire.com/"
   },
   {
     name: "Builder Digital: 149Photos",
@@ -160,7 +161,7 @@ export const PROJECTS: Project[] = [
       "Real estate media management platform for assigning photographers, capturing HD photos/3D/video, and sharing with builders and buyers; supports remote progress tracking.",
     techStack: ["Node.js", "React.js", "MongoDB", "Redis", "Docker", "AG Grid"],
     role: "Full Stack Developer",
-    demoUrl: "https://149photos.com/",
+    demoUrl: "https://www.149photos.com/",
   },
   {
     name: "Personal Portfolio (This Site)",
@@ -171,9 +172,18 @@ export const PROJECTS: Project[] = [
     demoUrl: "https://pradeep-portfolio.example.com",
     codeUrl: "https://github.com/PRADEEPRAWAT55/Portfolio",
   },
+  {
+    name: "DevTinder",
+    description:
+      "A developer matchmaking platform connecting programmers based on skills, interests, and project preferences; features swipe-based UI, real-time chat, mail notifications and Payment Gateway integration.",
+    techStack: ["React.js", "Node.js", "Socket.io", "Express", "MongoDB", "SES", "Docker", "CI/CD","Razorpay"],
+    role: "Full Stack Developer",
+  }
 ];
 
 export const ACHIEVEMENTS = [
   "Secured 91st global rank in CodeChef May Challenge 2021.",
   "Selected out of 3000+ students for Samsung Prism (Preparing and Inspiring Student Minds).",
+  "Got Client Appreciation for timely delivery and quality work at Jellyfish Technologies.",
+  "Lost 17kgs in 8 months through consistent workout and diet control not tachnical but personal achievement :)",
 ];

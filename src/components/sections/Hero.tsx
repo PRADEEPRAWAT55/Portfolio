@@ -16,6 +16,21 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
         });
     }, [controls]);
 
+    const email = 'Pradeep2000rawat@gmail.com';
+    const subject = encodeURIComponent('Inquiry via Portfolio');
+    const body = encodeURIComponent([
+        'Hi Pradeep,',
+        '',
+        'I came across your portfolio and would like to discuss a potential collaboration / opportunity.',
+        '',
+        'Name:',
+        'Email:',
+        'Message:',
+        '',
+        'Regards,'
+    ].join('\n'));
+    const mailtoHref = `mailto:${email}?subject=${subject}&body=${body}`;
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -146,7 +161,7 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
                         <motion.a
-                            href="mailto:Pradeep2000rawat@gmail.com"
+                            href={mailtoHref}
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center justify-center gap-2 overflow-hidden shadow-lg shadow-blue-500/30 transition-all duration-300">
@@ -175,8 +190,8 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
                         variants={itemVariants}
                         className="flex flex-wrap gap-6 justify-center lg:justify-start">
                         {[
-                            { value: "3", label: "Years Experience", icon: "📅" },
-                            { value: "3+", label: "Projects Built", icon: "🚀" },
+                            { value: "3+", label: "Years Experience", icon: "📅" },
+                            { value: "5+", label: "Projects Built", icon: "🚀" },
                             { value: "100%", label: "Client Satisfaction", icon: "⭐" }
                         ].map((stat, index) => (
                             <motion.div
@@ -230,7 +245,7 @@ const Hero = forwardRef((props, ref: ForwardedRef<HTMLElement>) => {
                         },
                         {
                             title: "Experience",
-                            content: "3 Years",
+                            content: "3+ Years",
                             icon: "🌟",
                             color: "orange",
                             gradient: "from-orange-500/20 to-orange-600/20"
