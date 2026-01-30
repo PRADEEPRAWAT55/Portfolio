@@ -106,7 +106,7 @@ export const techIcons = {
 
 // Build a normalized lookup to tolerate small naming differences
 const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-const normalizedMap: Record<string, JSX.Element> = {};
+const normalizedMap: Record<string, any> = {};
 Object.keys(techIcons).forEach((k) => {
     normalizedMap[normalize(k)] = techIcons[k as keyof typeof techIcons];
 });
