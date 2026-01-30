@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 type ReadMoreProps = {
-  children: string | JSX.Element | JSX.Element[];
+  children: string | any;
   className?: string;
   clamp?: number;
 };
