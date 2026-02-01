@@ -178,6 +178,8 @@ export const PROJECTS: Project[] = [
       "A developer matchmaking platform connecting programmers based on skills, interests, and project preferences; features swipe-based UI, real-time chat, mail notifications and Payment Gateway integration.",
     techStack: ["React.js", "Node.js", "Socket.io", "Express", "MongoDB", "SES", "Docker", "CI/CD","Razorpay"],
     role: "Full Stack Developer",
+    codeUrl: "https://github.com/PRADEEPRAWAT55/devTinder",
+    demoUrl:"",
   }
 ];
 

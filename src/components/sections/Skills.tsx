@@ -90,19 +90,7 @@ const Skills = forwardRef(({ skills }: SkillsProps, ref: ForwardedRef<HTMLElemen
                     <h3 className="text-xl lg:text-2xl font-bold text-white">
                       {skill.name}
                     </h3>
-                    <motion.div
-                      animate={{ 
-                        rotate: [0, 10, -10, 0],
-                        scale: [1, 1.1, 1]
-                      }}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                      }}
-                      className="text-3xl opacity-50 group-hover:opacity-100 transition-opacity">
-                      {idx === 0 ? '⚡' : idx === 1 ? '🎨' : '🛠️'}
-                    </motion.div>
+                  
                   </div>
 
                   {/* Progress bar */}

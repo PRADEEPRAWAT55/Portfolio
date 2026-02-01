@@ -167,7 +167,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                             </motion.div>
                           ))}
             </div>
-            {!project.image && project.demoUrl && (
+            {!project.image && project.demoUrl ? (
             <div className="mb-4">
               <a
                 href={project.demoUrl}
@@ -176,6 +176,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-3 py-2 mt-5 rounded-full text-sm font-semibold text-white shadow-md hover:scale-105 transition-transform">
                 <FiExternalLink size={14} />
                 <span>Live Demo</span>
+              </a>
+            </div>
+          ):(
+            <div className="mb-4">
+              <a
+                href={project.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-3 py-2 mt-5 rounded-full text-sm font-semibold text-white shadow-md hover:scale-105 transition-transform">
+                <FiGithub size={18} />
+                <span> Repo</span>
               </a>
             </div>
           )}
